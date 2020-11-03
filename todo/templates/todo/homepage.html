@@ -1,0 +1,32 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}Bienvenidos a TASKS R' Us{% endblock title %}
+
+{% block content %}
+
+<div class="jumbotron p-4 p-md-5 text-white rounded bg-dark mt-3" id="gears">
+  <div class="col-md-8 px-0">
+      <h1 class="display-6 font-italic">Bienvenidos a TASKS ᴙ' US</h1>
+      <h3 class="lead my-3">Aqui podra encontrar todas las tareas que quiera,
+      para hacer en casa si esta aburrido.</h3>
+      <p class="mb-0"><a href="/nosotros/" role="button" class="btn text-white
+          font-weight-bold">Más información ...</a></p>
+  </div>
+</div>
+
+<div class="row">
+{% for t in tasks %}
+  <div class="col-sm-4">
+    <img class="rounded-circle" width="140" height="140"
+        src="https://via.placeholder.com/140"
+        role="img" alt="Placeholder: 140x140"
+        >
+        <h2>{{ t.title }}</h2>
+        <p>{{ t.desc }}</p>
+        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+    </div><!-- /.col-sm-4 -->
+{% endfor %}
+
+</div><!-- /.row -->
+
+{% endblock content %}

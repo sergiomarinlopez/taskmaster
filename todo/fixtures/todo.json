@@ -1,0 +1,136 @@
+[
+{
+    "model": "todo.project",
+    "pk": "",
+    "fields": {
+        "name": "Analisis de datos",
+        "about": "",
+        "started": "2020-10-30"
+    }
+},
+{
+    "model": "todo.project",
+    "pk": "DEF",
+    "fields": {
+        "name": "Projecto por defecto",
+        "about": "",
+        "started": "2020-10-29"
+    }
+},
+{
+    "model": "todo.project",
+    "pk": "NODB",
+    "fields": {
+        "name": "Normalizacion de la base de datos",
+        "about": "Verificar que todas las tablas estén en tercera forma normal.",
+        "started": "2020-10-29"
+    }
+},
+{
+    "model": "todo.project",
+    "pk": "REDIS",
+    "fields": {
+        "name": "Añadir Servidor REDIS",
+        "about": "",
+        "started": "2020-10-29"
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 1,
+    "fields": {
+        "project": "DEF",
+        "title": "Aprender Python 3",
+        "desc": "",
+        "size": 3,
+        "high_priority": false,
+        "created": "2020-08-22T16:52:16Z",
+        "updated": "2020-10-30T16:45:50.713Z",
+        "closed": "2020-10-28T19:25:32Z"
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 2,
+    "fields": {
+        "project": "DEF",
+        "title": "Aprender Django",
+        "desc": "Suena interesante...",
+        "size": 1,
+        "high_priority": true,
+        "created": "2020-10-28T16:54:28Z",
+        "updated": "2020-10-28T18:29:44.913Z",
+        "closed": null
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 6,
+    "fields": {
+        "project": "REDIS",
+        "title": "Aprender Redis",
+        "desc": "Suena prometedor ....",
+        "size": 4,
+        "high_priority": false,
+        "created": "2020-10-28T18:28:47.560Z",
+        "updated": "2020-10-29T19:26:30.229Z",
+        "closed": null
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 7,
+    "fields": {
+        "project": "NODB",
+        "title": "Copia de seguridad de la BD",
+        "desc": "Hablar con esa persona tan especial de administracion.",
+        "size": 3,
+        "high_priority": true,
+        "created": "2020-10-29T16:38:18.631Z",
+        "updated": "2020-10-29T19:22:45.112Z",
+        "closed": null
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 8,
+    "fields": {
+        "project": "REDIS",
+        "title": "Configurar una imagen docker de REDIS",
+        "desc": "capullo",
+        "size": 4,
+        "high_priority": true,
+        "created": "2020-10-29T19:24:35.775Z",
+        "updated": "2020-10-29T19:24:35.783Z",
+        "closed": null
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 9,
+    "fields": {
+        "project": "DEF",
+        "title": "Aprender sobre el ORM",
+        "desc": "",
+        "size": 3,
+        "high_priority": true,
+        "created": "2020-10-30T15:57:18.059Z",
+        "updated": "2020-10-30T16:08:57.285Z",
+        "closed": null
+    }
+},
+{
+    "model": "todo.task",
+    "pk": 10,
+    "fields": {
+        "project": "REDIS",
+        "title": "Demostrar diferencia Insert/Update",
+        "desc": "Urge",
+        "size": 1,
+        "high_priority": true,
+        "created": "2020-10-30T16:17:55.889Z",
+        "updated": "2020-10-30T16:22:38.103Z",
+        "closed": null
+    }
+}
+]

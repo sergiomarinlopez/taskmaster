@@ -1,0 +1,31 @@
+{% extends 'todo/base.html' %}
+
+{% block title %} Tarea {{ t }} {% endblock %}
+
+{% block content %}
+
+<h1 class="display-4">{{ task.project_id }}-{{ task.title }}</h1>
+<blockquote>
+    {{ task.desc }}
+</blockqoute>
+<table class="table">
+ <thead>
+  <tr>
+    <th>Proyecto</th>
+    <th>Prioridad</th>
+    <th>Tamaño</th>
+    <th>Fuera de plazo</th>
+  </tr>
+ </thead>
+ <tbody>
+  <tr>
+    <td>{{ task.project_id }}</td>
+    <td>{{ task.high_priority }}</td>
+    <td>{{ task.size }}</td>
+    <td>{{ task.created }}</td>
+  </tr>
+ </tbody> 
+</table>
+
+
+{% endblock content %}

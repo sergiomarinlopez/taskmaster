@@ -1,0 +1,43 @@
+.title {
+    font-family: arial,helvetica,sans-serif;
+    font-size: 145%;
+    color: maroon;
+    border-top: 2px solid #C9C9C9;
+    border-bottom: 2px solid #E9E9E9;
+    border-left: 2px solid #C9C9C9;
+    background: #D9D9D9;
+    padding: 0 0.5em 4px 4px;
+    margin: 32px;
+    left: 132px;
+    text-align: right;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+}
+
+#gears {
+    background: url(/static/todo/img/gears.jpg);
+}
+
+td.priority, th.priority {
+    text-align: right;
+}
+
+.high-priority {
+    color: #992222;
+    font-weight: bolder;
+}
+
+.high-priority::after {
+    content: " ☑";
+}
+
+.normal-priority {
+    color: #779977;
+    font-weight: normal;
+}
+
+.normal-priority::after {
+    content: " ☒";
+}
+

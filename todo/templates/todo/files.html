@@ -1,0 +1,28 @@
+{% extends "todo/base.html" %}
+
+{% block title %}Ficheros{% endblock %}
+
+{% block content %}
+<p>He encontrado <strong>{{ items|length }} ficheros:</strong></p>
+<table border="1" width="100%">
+    <thead>
+        <tr>
+        <th scope="col">Nombre del archivo</th>
+        <th scope="col">Tamaño (en <em>bytes</em>)</th>
+        <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+{% for filename,size in items %}
+    <tr>
+        <td><code>{{ filename }}</code></td>
+        <td align="right">{{ size }}</td>
+        <td align="right">
+            <progress value="{{ size }}" max="{{max_size}}">
+            </progress>
+        </td>
+    </tr>
+{% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

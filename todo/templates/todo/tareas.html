@@ -1,0 +1,41 @@
+{% extends "todo/base.html" %}
+
+{% block title %}Tareas activas{% endblock %}
+
+{% block content %}
+
+<h1 class="title">Tareas</h1>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Título</th>
+            <th>Tamaño</th>
+            <th class="priority">Prioridad</th>
+            <th>Proyecto</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in tareas %}
+        <tr>
+            <td>{{ t.title }}</td>
+            <td>
+            <meter value="{{ t.size }}" max="5">
+                {{ t.size }}
+                    </meter>
+
+            </td>
+            <td class="priority">
+                {% if t.high_priority %}
+                    <strong class="high-priority">Si</strong>
+                {% else %}
+                    <strong class="normal-priority">No</strong>
+                {% endif %}
+            </td>
+            <td>{{ t.project_id }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}

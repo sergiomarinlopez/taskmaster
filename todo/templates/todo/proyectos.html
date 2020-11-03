@@ -1,0 +1,34 @@
+{% extends "todo/base.html" %}
+
+{% block title %}Proyectos{% endblock %}
+
+{% block content %}
+
+<h1 class="title">Proyectos</h1>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Fecha de Inicio</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in proyectos %}
+        <tr>
+            <td>{{ p.pk }}</td>
+            <td>{{ p.name }}
+                {% if p.about %}
+                <br><small>
+                {{ p.about }}
+                </small>
+                {% endif %}
+            </td>
+            <td>{{ p.started }}</p>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}
