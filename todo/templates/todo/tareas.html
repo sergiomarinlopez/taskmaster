@@ -1,5 +1,5 @@
 {% extends "todo/base.html" %}
-
+{% load todotags %}
 {% block title %}Tareas activas{% endblock %}
 
 {% block content %}
@@ -18,12 +18,16 @@
     <tbody>
         {% for t in tareas %}
         <tr>
-            <td>{{ t.title }}</td>
             <td>
-            <meter value="{{ t.size }}" max="5">
-                {{ t.size }}
-                    </meter>
-
+        <a href="{% url 'detail_task' t.pk %}">
+                {{ t.title }}
+              </a>
+            
+            </td>
+            <td>
+            
+                {{ t.size|as_task_size:"short" }}
+                
             </td>
             <td class="priority">
                 {% if t.high_priority %}

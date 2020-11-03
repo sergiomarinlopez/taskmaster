@@ -1,17 +1,20 @@
 {% extends 'todo/base.html' %}
+{% load todotags %}
 
 {% block title %} Tarea {{ t }} {% endblock %}
 
 {% block content %}
 
-<h1 class="display-4">{{ task.project_id }}-{{ task.title }}</h1>
+<h1 class="display-4">{{ task.project_id }}-{{ task.pk }}</h1>
+<p class="lead">{{ task.title }}</p>
 <blockquote>
-    {{ task.desc }}
+    {{ task.desc|default:"Descripción estandar"|upper }}
 </blockqoute>
 <table class="table">
  <thead>
   <tr>
     <th>Proyecto</th>
+    <th>Creada el</th>
     <th>Prioridad</th>
     <th>Tamaño</th>
     <th>Fuera de plazo</th>
@@ -20,9 +23,17 @@
  <tbody>
   <tr>
     <td>{{ task.project_id }}</td>
-    <td>{{ task.high_priority }}</td>
-    <td>{{ task.size }}</td>
-    <td>{{ task.created }}</td>
+    <td>
+      {{ task.created|date:"d/M"}}<br>{{ task.created|date:"Y"}}
+
+
+    </td>
+    <td>{{ task.high_priority|yesno:"Alta,baja" }}</td>
+    <td>{{ task.size|as_task_size }}</td>
+    <td>
+      {{ task.is_due|yesno:"Fuera de plazo,No está fuera de plazo" }}
+      {{ task.closed|default:"Tarea Abierta" }}
+    </td>
   </tr>
  </tbody> 
 </table>

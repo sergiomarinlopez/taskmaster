@@ -66,3 +66,26 @@ class Task(models.Model):
         else:
             return False
     
+
+class Document(models.Model):
+    id_document = models.AutoField(primary_key=True)
+    task = models.ForeignKey(Task, on_delete=models.PROTECT)
+    document_name = models.CharField(max_length=200)
+    archive = models.FileField(upload_to='task/docs')
+
+    def __str__(self):
+        return self.document_name
+
+
+
+
+
+
+
+
+
+
+
+
+
+

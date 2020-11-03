@@ -24,9 +24,11 @@ import todo.views
 urlpatterns = [
     path('', todo.views.homepage, name="homepage"),
     path('tareas/', todo.views.tareas),
-    path('tareas/<int:id_tarea>', todo.views.detalle_tarea,
-        name='detalle_tarea',
-    ),
+    path(
+        'tareas/<int:id_tarea>',
+        todo.views.detalle_tarea,
+        name="detail_task",
+        ),
     path('proyectos/', todo.views.proyectos),
     path('hola/', todo.views.hola),
     path('files/', todo.views.files),

@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from todo.models import Task, Project
+from todo.models import Task, Project, Document
 
 class TaskAdmin(admin.ModelAdmin):
     list_display = (
@@ -24,3 +24,10 @@ class ProjectAdmin(admin.ModelAdmin):
 
 admin.site.register(Project, ProjectAdmin)
 
+
+
+class DocumentAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Document, DocumentAdmin)

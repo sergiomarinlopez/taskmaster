@@ -5,7 +5,7 @@
     "fields": {
         "name": "Analisis de datos",
         "about": "",
-        "started": "2020-10-30"
+        "started": "2019-01-01"
     }
 },
 {
@@ -32,7 +32,7 @@
     "fields": {
         "name": "Añadir Servidor REDIS",
         "about": "",
-        "started": "2020-10-29"
+        "started": "2019-03-05"
     }
 },
 {
@@ -131,6 +131,24 @@
         "created": "2020-10-30T16:17:55.889Z",
         "updated": "2020-10-30T16:22:38.103Z",
         "closed": null
+    }
+},
+{
+    "model": "todo.document",
+    "pk": 1,
+    "fields": {
+        "task": 6,
+        "document_name": "Tutorial de redis",
+        "archive": "task/docs/salida.pdf"
+    }
+},
+{
+    "model": "todo.document",
+    "pk": 2,
+    "fields": {
+        "task": 8,
+        "document_name": "foto",
+        "archive": "task/docs/jileon.png"
     }
 }
 ]
