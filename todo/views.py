@@ -8,7 +8,7 @@ from todo.models import Task, Project
 
 def homepage(request):
     return render(request, 'todo/homepage.html', {
-        "tasks": Task.objects.all()[0:3],
+        "tasks": Task.objects.all().order_by('-created')[0:3],
         })
 
 
