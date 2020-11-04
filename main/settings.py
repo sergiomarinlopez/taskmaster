@@ -26,7 +26,11 @@ SECRET_KEY = '=x6$*s3ka6)hu$p=g5^a4xjrmscdpywbsd78ov0@d6h&)_m+7b'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'euribatestaskmaster.herokuapp.com',
+    ]
 
 
 # Application definition
