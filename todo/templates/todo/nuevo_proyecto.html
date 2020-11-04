@@ -1,0 +1,37 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}
+Crear un nuevo proyecto
+{% endblock title %}
+
+{% block content %}
+
+<h2>Crear una nueva tarea</h2>
+
+<form method="POST" action="/proyectos/nuevo/">
+{% csrf_token %}
+<p class="form-group">
+<label for="txt_id_project">Código de proyecto</label><br>
+<input id="txt_id_project" class="form-control"  type="text" name="id_project">
+</p>
+
+<p class="form-group">
+<label for="txt_name">Nombre de proyecto</label>
+<input id="txt_name" class="form-control"  type="text" name="name">
+</p>
+
+<p class="form-group">
+<label for="id_txt_about">Descripción del proyecto</label>
+<textarea name="about" class="form-control"  cols="64" rows="4"></textarea>
+</p>
+
+<button type="submit" class="btn btn-primary">Crear projecto</button>
+
+
+
+<form>
+
+
+{% endblock content %}
+
+[TODO: poner un formulario]
