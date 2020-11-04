@@ -16,8 +16,10 @@ Including another URLconf
 import datetime
 import os
 
+from django.conf import settings
 from django.contrib import admin
 from django.urls import path, re_path
+from django.views.static import serve
 
 import todo.views
 
@@ -35,3 +37,11 @@ urlpatterns = [
     path('hola/<int:num>', todo.views.numero),
     path('admin/', admin.site.urls),
 ]
+
+if settings.DEBUG:
+    urlpatterns.append(
+        re_path(
+            r'^media/(?P<path>.*)$', serve, {
+                'document_root': settings.MEDIA_ROOT,
+            }),
+        )

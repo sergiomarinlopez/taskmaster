@@ -1,7 +1,7 @@
 [
 {
     "model": "todo.project",
-    "pk": "",
+    "pk": "ADD",
     "fields": {
         "name": "Analisis de datos",
         "about": "",
@@ -134,21 +134,17 @@
     }
 },
 {
-    "model": "todo.document",
-    "pk": 1,
+    "model": "todo.task",
+    "pk": 11,
     "fields": {
-        "task": 6,
-        "document_name": "Tutorial de redis",
-        "archive": "task/docs/salida.pdf"
-    }
-},
-{
-    "model": "todo.document",
-    "pk": 2,
-    "fields": {
-        "task": 8,
-        "document_name": "foto",
-        "archive": "task/docs/jileon.png"
+        "project": "ADD",
+        "title": "Analizar la base de datos",
+        "desc": "Verificar la integridad relacional cuando se borra un proyecto",
+        "size": 3,
+        "high_priority": false,
+        "created": "2020-11-04T10:20:20Z",
+        "updated": "2020-11-04T10:20:20Z",
+        "closed": null
     }
 }
 ]

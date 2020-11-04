@@ -38,5 +38,20 @@
  </tbody> 
 </table>
 
+{% if task.document_set.count %}
+<ul>
+  {% for d in task.document_set.all %}
+    <li>{{ d }}
+      {{ d.archive }}
+      {{ d.archive.size }}
+      {{ d.archive.url }} 
+      <a href="{{ d.archive.url }}">Descargar</a>
+
+    </li>
+  {% endfor %}
+
+</ul>
+{% endif %}
+
 
 {% endblock content %}
