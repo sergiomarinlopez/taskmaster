@@ -25,9 +25,7 @@
             
             </td>
             <td>
-            
                 {{ t.size|as_task_size:"short" }}
-                
             </td>
             <td class="priority">
                 {% if t.high_priority %}
@@ -36,7 +34,9 @@
                     <strong class="normal-priority">No</strong>
                 {% endif %}
             </td>
-            <td>{{ t.project_id }}</td>
+            <td>{{ t.project_id }}
+            <br>{{ t.project.name }}
+            </td>
         </tr>
         {% endfor %}
     </tbody>
