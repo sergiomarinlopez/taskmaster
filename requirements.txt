@@ -1,3 +1,4 @@
-django
 arrow
+django
+gunicorn
 whitenoise
