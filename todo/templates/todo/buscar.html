@@ -1,0 +1,47 @@
+{% extends 'todo/base.html' %}
+{% load todotags %}
+
+{% block title %}
+Tareas que contienen la palabra "{{q}}"
+{% endblock title %}
+
+{% block content %}
+
+<h1 class="display-4">
+Tareas que contienen la palabra "{{q}}"</h1>
+
+<h2 class="subtitle">
+Encontradas <span class="badge badge-info">{{ num_tasks }}</span>
+tareas</h2>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Título</th>
+            <th>Tamaño</th>
+            <th class="priority">Prioridad</th>
+            <th>Proyecto</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for t in tasks %}
+        <tr>
+            <td>
+        <a href="{% url 'detail_task' t.pk %}">
+                {{ t.title }}
+              </a>
+            
+            </td>
+            <td>
+                {% show_size t %} 
+            </td>
+            <td class="priority">
+                {% show_priority t %}
+            </td>
+            <td>{{ t.project_id }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}
