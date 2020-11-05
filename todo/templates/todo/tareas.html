@@ -25,16 +25,10 @@
             
             </td>
             <td>
-            
-                {{ t.size|as_task_size:"short" }}
-                
+                {% show_size t %} 
             </td>
             <td class="priority">
-                {% if t.high_priority %}
-                    <strong class="high-priority">Si</strong>
-                {% else %}
-                    <strong class="normal-priority">No</strong>
-                {% endif %}
+                {% show_priority t %}
             </td>
             <td>{{ t.project_id }}</td>
         </tr>

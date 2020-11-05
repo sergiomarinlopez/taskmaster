@@ -16,6 +16,16 @@
         <a class="nav-link" href="/tareas">Tareas</a>
       </li>
     </ul>
+
+      <form method="POST" action="/buscar" class="form-inline mt-2 mt-md-0">
+        {% csrf_token %}
+        <input name="q" 
+          value="{{q|default:''}}"
+         class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+
+
   </div>
   
 </nav>

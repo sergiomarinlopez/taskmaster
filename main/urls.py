@@ -36,6 +36,7 @@ urlpatterns = [
     path('hola/', todo.views.hola),
     path('files/', todo.views.files),
     path('hola/<int:num>', todo.views.numero),
+    path('buscar', todo.views.buscar),
     path('admin/', admin.site.urls),
 ]
 
