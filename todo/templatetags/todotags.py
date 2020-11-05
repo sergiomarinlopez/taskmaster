@@ -21,3 +21,16 @@ def as_task_size(size_level, format="short"):
     else:
         index = 0
     return t[index]
+
+
+@register.inclusion_tag('todo/show_priority.html')
+def show_priority(task):
+    return {'task': task}
+
+
+@register.inclusion_tag('todo/show_size.html')
+def show_size(task):
+    return {
+        'size': task.size,
+        'label': SIZES.get(task.size)[0] 
+        }

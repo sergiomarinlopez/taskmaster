@@ -1,0 +1,18 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}
+Crear un nuevo proyecto
+{% endblock title %}
+
+{% block content %}
+
+<h2>Crear un nuevo proyecto</h2>
+
+<form method="POST" action="/proyectos/nuevo/">
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit" class="btn btn-primary">Crear projecto</button>
+<form>
+
+{% endblock content %}
+]

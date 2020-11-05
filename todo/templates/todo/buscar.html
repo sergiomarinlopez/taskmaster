@@ -1,10 +1,18 @@
-{% extends "todo/base.html" %}
+{% extends 'todo/base.html' %}
 {% load todotags %}
-{% block title %}Tareas activas{% endblock %}
+
+{% block title %}
+Tareas que contienen la palabra "{{q}}"
+{% endblock title %}
 
 {% block content %}
 
-<h1 class="title">Tareas</h1>
+<h1 class="display-4">
+Tareas que contienen la palabra "{{q}}"</h1>
+
+<h2 class="subtitle">
+Encontradas <span class="badge badge-info">{{ num_tasks }}</span>
+tareas</h2>
 
 <table class="table">
     <thead class="thead-dark">
@@ -16,7 +24,7 @@
         </tr>
     </thead>
     <tbody>
-        {% for t in tareas %}
+        {% for t in tasks %}
         <tr>
             <td>
         <a href="{% url 'detail_task' t.pk %}">
@@ -26,14 +34,11 @@
             </td>
             <td>
                 {% show_size t %} 
-                {{ t.size|as_task_size:"short" }}
             </td>
             <td class="priority">
                 {% show_priority t %}
             </td>
-            <td>{{ t.project_id }}
-            <br>{{ t.project.name }}
-            </td>
+            <td>{{ t.project_id }}</td>
         </tr>
         {% endfor %}
     </tbody>

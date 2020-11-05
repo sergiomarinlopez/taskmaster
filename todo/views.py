@@ -2,9 +2,11 @@ import os
 import datetime
 
 from django.shortcuts import render
+from django.shortcuts import redirect
+from django.db.models import Q
 
 from todo.models import Task, Project
-
+from todo.forms import ProjectModelForm
 
 def homepage(request):
     return render(request, 'todo/homepage.html', {
@@ -58,4 +60,31 @@ def detalle_tarea(request, id_tarea):
 def proyectos(request):
     return render(request, 'todo/proyectos.html', {
         "proyectos": Project.objects.all(),
+    })
+
+
+def crear_proyecto(request):
+    form = ProjectModelForm(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            new_project = form.save()
+            return redirect('/proyectos')
+    return render(request, 'todo/nuevo_proyecto.html', {
+        "form": form,
+    })
+
+
+def buscar(request):
+    q = request.POST.get('q')
+    tasks = Task.objects.filter(
+        Q(title__icontains=q) | Q(desc__icontains=q)
+    )
+    if q in ['urgente', 'urgentes']:
+        tasks = tasks | Task.objects.filter(high_priority=True)
+    num_tasks = tasks.count()
+    print(f"num_tasks is {num_tasks}")
+    return render(request, "todo/buscar.html", {
+        'q': q,
+        'tasks': tasks,
+        'num_tasks': num_tasks,
     })

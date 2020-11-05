@@ -5,38 +5,24 @@
 
 {% block content %}
 
-<h1 class="display-4">{{ task.project_id }}-{{ task.pk }}</h1>
-<p class="lead">{{ task.title }}</p>
-<blockquote>
-    {{ task.desc|default:"Descripción estandar"|upper }}
-</blockqoute>
-<table class="table">
- <thead>
-  <tr>
-    <th>Proyecto</th>
-    <th>Creada el</th>
-    <th>Prioridad</th>
-    <th>Tamaño</th>
-    <th>Fuera de plazo</th>
-  </tr>
- </thead>
- <tbody>
-  <tr>
-    <td>{{ task.project_id }}</td>
-    <td>
-      {{ task.created|date:"d/M"}}<br>{{ task.created|date:"Y"}}
+<h1 class="title display-4">{{ task.project_id }}-{{ task.pk }}</h1>
 
-
-    </td>
-    <td>{{ task.high_priority|yesno:"Alta,baja" }}</td>
-    <td>{{ task.size|as_task_size }}</td>
-    <td>
-      {{ task.is_due|yesno:"Fuera de plazo,No está fuera de plazo" }}
-      {{ task.closed|default:"Tarea Abierta" }}
-    </td>
-  </tr>
- </tbody> 
-</table>
+<div class="card card-info">
+  <div class="card-header">
+    <h1 class="card_title">{{ task.title }}</h1>
+  </div>
+  <div class="card-body">
+   <ul class="list-group">  
+    <li class="list-group-item">{{ task.desc|default:"Sin descripción" }} </li>
+    <li class="list-group-item">Proyecto {{ task.project_id }}</li>
+    <li class="list-group-item">Creada el {{ task.created|date:"d/M/Y"}}</li>
+    <li class="list-group-item">Prioridad {{ task.high_priority|yesno:"alta,baja" }}</li>
+    <li class="list-group-item">Tamaño {{ task.size|as_task_size }}</li>
+    <li class="list-group-item">{{ task.is_due|yesno:"Fuera de plazo,No está fuera de plazo" }}</li>
+    <li class="list-group-item">{{ task.is_closed|yesno:"Tarea Abierta,Cerrada" }}</li>
+   </ul>
+  </div><!-- de card-body --> 
+ </div><!-- de card --> 
 
 {% if task.document_set.count %}
 <ul>
@@ -46,7 +32,6 @@
       {{ d.archive.size }}
       {{ d.archive.url }} 
       <a href="{{ d.archive.url }}">Descargar</a>
-
     </li>
   {% endfor %}
 

@@ -65,6 +65,9 @@ class Task(models.Model):
             return True
         else:
             return False
+
+    def is_closed(self):
+        self.closed != None
     
 
 class Document(models.Model):
