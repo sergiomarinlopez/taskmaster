@@ -2,9 +2,11 @@ import os
 import datetime
 
 from django.shortcuts import render
+from django.shortcuts import redirect
+from django.db.models import Q
 
 from todo.models import Task, Project
-
+from todo.forms import ProjectModelForm
 
 def homepage(request):
     return render(request, 'todo/homepage.html', {
@@ -59,107 +61,27 @@ def proyectos(request):
 
 
 def crear_proyecto(request):
-    from django.http import HttpResponse
-    if request.method == 'GET':
-        return render(request, 'todo/nuevo_proyecto.html')
-    else:
-        return HttpResponse(f"""
-        Vaya, ha hecho un POST:
-        <ul>
-        <li>project_id: {request.POST['id_project']}</li>
-        <li>name: {request.POST['name']}</li>
-        <li>about: {request.POST['about']}</li>
-        """)
-
-
-
-def crear_proyecto2(request):
-    from django.http import HttpResponse
-    if request.method == 'GET':
-        return render(request, 'todo/nuevo_proyecto.html')
-    else:
-        id_project = request.POST['id_project']
-        name = request.POST['name']
-        about = request.POST['about']
-        if id_project and name:
-            new_project = Project(
-                id_project=id_project,
-                name=name,
-                about=about,
-            )
-        new_project.save()
-        return HttpResponse(f"""
-        Vaya, ha hecho un POST:
-        Se ha creado el projecto {new_project.pk}
-        """)
-
-
-
-
-
-def crear_proyecto3(request):
-    from django.http import HttpResponse
-    from todo.forms import ProjectForm
-
-    if request.method == 'GET':
-        form = ProjectForm()
-        return render(request, 'todo/nuevo_proyecto3.html', {
-            "form": form,
-        })
-    else:
-        form = ProjectForm(request.POST)
-        if form.is_valid():
-            id_project = form.cleaned_data['id_project']
-            name = form.cleaned_data['name']
-            about = form.cleaned_data['about']
-            new_project = Project(
-                id_project=id_project,
-                name=name,
-                about=about,
-            )
-            new_project.save()
-            return HttpResponse(f"""
-        Vaya, ha hecho un POST:
-        Se ha creado el projecto {new_project.pk}
-        """)
-        else:
-            return render(request, 'todo/nuevo_proyecto3.html', {
-                "form": form,
-            })
-
-
-
-def crear_proyecto3(request):
-    from django.shortcuts import redirect
-    from todo.forms import ProjectForm
-    
-    form = ProjectForm(request.POST or None)
-    if request.method == 'POST':
-        if form.is_valid():
-            id_project = form.cleaned_data['id_project']
-            name = form.cleaned_data['name']
-            about = form.cleaned_data['about']
-            new_project = Project(
-                id_project=id_project,
-                name=name,
-                about=about,
-            )
-            new_project.save()
-            return redirect('/proyectos')
-    return render(request, 'todo/nuevo_proyecto3.html', {
-        "form": form,
-    })
-
-
-def crear_proyecto4(request):
-    from django.shortcuts import redirect
-    from todo.forms import ProjectModelForm
-    
     form = ProjectModelForm(request.POST or None)
     if request.method == 'POST':
         if form.is_valid():
             new_project = form.save()
             return redirect('/proyectos')
-    return render(request, 'todo/nuevo_proyecto3.html', {
+    return render(request, 'todo/nuevo_proyecto.html', {
         "form": form,
+    })
+
+
+def buscar(request):
+    q = request.POST.get('q')
+    tasks = Task.objects.filter(
+        Q(title__icontains=q) | Q(desc__icontains=q)
+    )
+    if q in ['urgente', 'urgentes']:
+        tasks = tasks | Task.objects.filter(high_priority=True)
+    num_tasks = tasks.count()
+    print(f"num_tasks is {num_tasks}")
+    return render(request, "todo/buscar.html", {
+        'q': q,
+        'tasks': tasks,
+        'num_tasks': num_tasks,
     })
