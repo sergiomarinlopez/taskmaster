@@ -44,7 +44,10 @@ def files(request):
 
 def tareas(request):
     return render(request, 'todo/tareas.html', {
-        "tareas": Task.objects.all(),
+        "tareas": Task.objects
+            .select_related('project')
+            .order_by('-created')
+            .all(),
     })
 
 
