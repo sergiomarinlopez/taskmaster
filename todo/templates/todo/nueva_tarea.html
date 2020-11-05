@@ -1,0 +1,18 @@
+{% extends 'todo/base.html' %}
+
+{% block title %}
+Crear una nueva tarea
+{% endblock title %}
+
+{% block content %}
+
+<h2>Crear una nueva tarea</h2>
+
+<form method="POST" action="/tareas/nueva/">
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit" class="btn btn-primary">Crear tarea</button>
+<form>
+
+{% endblock content %}
+]
